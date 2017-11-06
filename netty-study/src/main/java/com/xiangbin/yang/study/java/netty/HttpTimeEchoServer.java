@@ -9,10 +9,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
-public class HttTimeEchoServer {
+public class HttpTimeEchoServer {
     private int port;
 
-    public HttTimeEchoServer(Integer port) {
+    public HttpTimeEchoServer(Integer port) {
         this.port = port == null ? 80 : port;
     }
 
@@ -20,7 +20,7 @@ public class HttTimeEchoServer {
         NioEventLoopGroup accpetGroup = new NioEventLoopGroup();
         NioEventLoopGroup workGroup = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap()
-                .group(accpetGroup)
+                .group(accpetGroup, workGroup)
                 .localAddress(port)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<Channel>() {
@@ -46,8 +46,9 @@ public class HttTimeEchoServer {
     }
 
     public static void main(String[] args) {
-        System.out.println("Start netty time echo server at: " + 8081);
-        HttTimeEchoServer server = new HttTimeEchoServer(8081);
+        int port = args.length >= 1 ? Integer.parseInt(args[0]) : 8081;
+        System.out.println("Start netty time echo server at: " + port);
+        HttpTimeEchoServer server = new HttpTimeEchoServer(port);
         server.start();
     }
 }

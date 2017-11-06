@@ -18,7 +18,7 @@ public class TimeEchoHander extends SimpleChannelInboundHandler<FullHttpRequest>
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest msg) throws Exception {
         //System.out.println("Receive client request!");
-        System.out.println(msg.method().name() + " " + msg.uri() + " " + msg.protocolVersion());
+        //System.out.println(msg.method().name() + " " + msg.uri() + " " + msg.protocolVersion());
         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
         response.content().writeBytes(DATEFORMAT.format(new Date()).getBytes("utf-8"));
 
