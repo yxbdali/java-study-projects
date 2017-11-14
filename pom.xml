@@ -8,6 +8,7 @@
     <modules>
         <module>netty-study</module>
         <module>socket-study</module>
+        <module>thread-study</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -47,6 +48,12 @@
           </dependency>
 
           <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-log4j2</artifactId>
+              <version>1.4.2.RELEASE</version>
+          </dependency>
+
+          <dependency>
               <groupId>org.apache.httpcomponents</groupId>
               <artifactId>httpclient</artifactId>
               <version>4.5.3</version>
@@ -71,5 +78,16 @@
           </dependency>
       </dependencies>
   </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
